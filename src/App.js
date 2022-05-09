@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { useRef, useEffect } from 'react'
+import { io } from 'socket.io-client'
+import Join from './Join'
 
 function App() {
+  const socket = useRef(null)
+
+  useEffect(() => {
+    const { REACT_APP_API_URL } = process.env
+    socket.current = io(REACT_APP_API_URL)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Join socket={ socket } />
     </div>
   );
 }
