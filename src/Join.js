@@ -5,7 +5,9 @@ export default function Join({ socket }) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        socket.current.emit("joinRoom", roomCode)
+        socket.current.emit("joinRoom", roomCode, res => {
+            console.log(res)
+        })
     }
 
     const handleChange = e => {
