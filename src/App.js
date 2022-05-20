@@ -6,6 +6,7 @@ import {
 } from 'react'
 import { io } from 'socket.io-client'
 import Join from './Join'
+import Room from './Room'
 
 function App() {
   const [room, setRoom] = useState(null)
@@ -21,7 +22,7 @@ function App() {
       {
         room
         ?
-        <p>{ room.accessCode }</p>
+        <Room room={ room } />
         :
         <Join 
           socket={ socket }
