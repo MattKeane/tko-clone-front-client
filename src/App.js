@@ -1,9 +1,14 @@
 import './App.css';
-import { useRef, useEffect } from 'react'
+import { 
+  useRef, 
+  useEffect,
+  useState, 
+} from 'react'
 import { io } from 'socket.io-client'
 import Join from './Join'
 
 function App() {
+  const [room, setRoom] = useState(null)
   const socket = useRef(null)
 
   useEffect(() => {
@@ -13,7 +18,16 @@ function App() {
 
   return (
     <div className="App">
-      <Join socket={ socket } />
+      {
+        room
+        ?
+        <p>{ room.accessCode }</p>
+        :
+        <Join 
+          socket={ socket }
+          setRoom={ setRoom } 
+        />
+      }
     </div>
   );
 }
