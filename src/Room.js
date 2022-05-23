@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import CreateUser from './CreateUser'
 
-export default function Room({ room }) {
+export default function Room({ room, socket }) {
     const [user, setUser] = useState(null)
     return (
         <>
@@ -12,6 +12,7 @@ export default function Room({ room }) {
                 <CreateUser 
                     accessCode={ room.accessCode }
                     setUser={ setUser }
+                    socket={ socket }
                 />
             }
         </>

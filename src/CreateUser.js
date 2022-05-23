@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-export default function CreateUser({ accessCode, setUser }) {
+export default function CreateUser({ accessCode, setUser, socket }) {
     const [username, setUsername] = useState('')
 
     const handleChange = e => setUsername(e.target.value)
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(username)
+        socket.current.emit('createUser', accessCode, username)
     }
 
     return (

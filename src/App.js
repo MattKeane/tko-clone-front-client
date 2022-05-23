@@ -22,7 +22,10 @@ function App() {
       {
         room
         ?
-        <Room room={ room } />
+        <Room 
+          room={ room }
+          socket={ socket } 
+        />
         :
         <Join 
           socket={ socket }
