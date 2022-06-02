@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const { REACT_APP_API_URL } = process.env
-    socket.current = io(REACT_APP_API_URL)
+    socket.current = io(REACT_APP_API_URL + '/client')
   }, [])
 
   return (

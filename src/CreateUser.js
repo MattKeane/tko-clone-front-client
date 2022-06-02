@@ -7,7 +7,9 @@ export default function CreateUser({ accessCode, setUser, socket }) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        socket.current.emit('createUser', accessCode, username)
+        socket.current.emit('createUser', accessCode, username, res => {
+            console.log(res)
+        })
     }
 
     return (
